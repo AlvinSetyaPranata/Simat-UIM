@@ -2,17 +2,17 @@
 
 Applikasi untuk membantu mahasiswa dalam memanagement dan mengkontrol aktivitas yang berkaitan dengan perkuliahannya
 
-# Version
+# Versi
 - SIMAT-v.3.0
-- **Sweet Watermelon**
+- **SMA (Si Manis Azey)**
 
-# Features
+# Fitur
 - Informasi Pribadi
-- Kontrol Pembayaran
-- Preview nilai UAS, UTS
-- DSB
+- Pembayaran Online
+- Laporan Online
+- Lembar Jawaban Online
 
-# Technologies
+# Teknologi
 
 Applikasi ini dibuat menggunakan Teknologi terbaru, antara lain:
 
@@ -23,11 +23,10 @@ Applikasi ini dibuat menggunakan Teknologi terbaru, antara lain:
 
 Dan tentunya applikasi ini adalah applikasi Open Source dan menggunakan metode **SPA** (Single Page Application) yang dapat meningkatkan performa website, serta user expirience yang bagus
 
-## License
+## Lisensi
+MIT
 
-Universitas Islam Madura
-
-## Powered By 
+## Dikembangkan oleh 
 ![Alt text](https://raw.githubusercontent.com/AlvinSetyaPranata/alvinsetyaportfolio/master/public/logo%201.png)
 
  [React JS]: <https://reactjs.org>
