@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Penerimaan Polri</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Penerimaan Polri" />
+    <meta name="author" content="RIM POLRI" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://penerimaan.polri.go.id/assets/images/logoSsdm.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://penerimaan.polri.go.id/assets/css/animate.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://penerimaan.polri.go.id/assets/css/owl.carousel.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://penerimaan.polri.go.id/assets/css/magnific-popup.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://penerimaan.polri.go.id/assets/css/flaticon.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://penerimaan.polri.go.id/assets/css/style.css"
+    />
+
+  </head>
+  <body>
+    <div id="box-wa" class="chatbox-wrapper" style="z-index: 999999">
+      <div class="chatbox-toggle">
+        <img
+          src="https://penerimaan.polri.go.id/assets/images/hotline_wa.png"
+          alt=""
+          width="110"
+        />
+      </div>
+      <div id="chatboxMsg" class="chatbox-message-wrapper">
+        <div class="chatbox-message-bottom">
+          <div class="chatbox-message-input">
+            <h5>Silahkan Pilih HOTLINE di bawah ini:</h5>
+            <hr />
+            <select
+              class="form-control text-uppercase alert alert-success"
+              name="idsatuan"
+              style="
+                text-align: center;
+                max-width: 100%;
+                border: #eee thin solid;
+                padding: 5px;
+              "
+              onChange="getHotlineWa(this.value)"
+              required
+            >
+              <option
+                value="+6285773760016# saya ingin bertanya terkait penerimanaan polri tahun 2023#Pusat"
+              >
+                Hotline Pusat
+              </option>
+            </select>
+            <a
+              target="_blank"
+              id="idHotlineWa"
+              href="https://api.whatsapp.com/send?phone=+6285773760016&text=Halo admin pusat saya ingin bertanya terkait penerimanaan polri tahun 2023"
+              ><button class="form-control mt-1 bg-success rounded text-light">
+                Hubungi <i class="fa fa-whatsapp"></i></button
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+      style="z-index: 99"
+    >
+      <div class="container">
+        <a class="navbar-nav" href="https://penerimaan.polri.go.id/"
+          ><span
+            style="
+              font-weight: bold;
+              font-size: 24px;
+              color: #fdb407;
+              padding-right: 3px;
+            "
+            >PENERIMAAN</span
+          >
+          <span style="font-weight: bold; font-size: 24px; color: #393333"
+            >ANGGOTA POLRI 4.0</span
+          ></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="https://penerimaan.polri.go.id/" class="nav-link"
+                >DASHBOARD</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a href="https://penerimaan.polri.go.id/biodata" class="nav-link"
+                >BIODATA</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a href="https://penerimaan.polri.go.id/berkas" class="nav-link"
+                >BERKAS</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a href="https://penerimaan.polri.go.id/nilai" class="nav-link"
+                >NILAI</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a href="https://penerimaan.polri.go.id/logout" class="nav-link"
+                >LOGOUT</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    <section class="ftco-section hero-wrap">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="wrapper">
+              <div class="row no-gutters">
+                <div
+                  class="col-lg-12 col-md-12 order-md-last d-flex align-items-stretch"
+                >
+                  <div
+                    class="contact-wrap w-100 p-md-5 p-4"
+                    style="
+                      border-radius: 10px;
+                      box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+                    "
+                  >
+                    <div class="row">
+                      <div class="col-md-12"><hr /></div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <h3 class="mb-4">BERKAS PESERTA</h3>
+                          <p style="color: #ff0000">
+                            <b
+                              >*Jika pada file berkas terdapat keteragan file
+                              corupt silahkan refresh halaman anda!</b
+                            >
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <table class="table table-striped table-bordered">
+                            <tr>
+                              <th class="text-center">No</th>
+                              <th class="text-center">Nama Berkas</th>
+                              <th class="text-center">File Berkas</th>
+                              <th class="text-center">Informasi Validasi</th>
+                              <th class="text-center">Upload</th>
+                            </tr>
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="1"
+                              />
+                              <tr>
+                                <td>1</td>
+                                <td>
+                                  KARTU TANDA PENDUDUK (KTP)
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_ktp35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_ktp35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="2"
+                              />
+                              <tr>
+                                <td>2</td>
+                                <td>
+                                  KARTU KELUARGA (KK)
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_kk35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_kk35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="3"
+                              />
+                              <tr>
+                                <td>3</td>
+                                <td>
+                                  AKTE KELAHIRAN
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_akte35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_akte35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="4"
+                              />
+                              <tr>
+                                <td>4</td>
+                                <td>
+                                  IJAZAH PENDIDIKAN UMUM TERAKHIR
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <br /><span
+                                    style="
+                                      font-size: 10px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    >sesuai persyaratan jenis diktuk yang
+                                    dipilih</span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_ijazah_terakhir35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_ijazah_terakhir35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                            
+                        </form>																																									<form action="kk/" class="form" id="add" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                            {% csrf_token %}
+                            <input type="hidden" name="nik" value="35280424020500021680733675">
+                            <input type="hidden" name="berkas_kategori_id" value="5">
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    TRANSKRIP NILAI
+                                                                                                                                                                <br><span style='font-size:10px; color:#ff0000; font-weight:bold;'>bagi peserta lulusan sekolah tinggi/akademi/perguruan tinggi</span>
+                                                                                                                                                            <p style="font-size:10px; color:red;">*Maksimal ukuran file 2Mb</p>
+                                </td>
+                                <td style="font-size:11px;">
+                                                                                                                                                                -
+                                                                                            </td>
+                                <td style="font-size:10px; color:#ff0000; font-weight:bold;">
+                                                                                                    belum upload
+                                                                                            </td>
+                                <td style="font-size:11px;">
+                                                                                                                                                            <table>
+                                    <tr>
+                                        <td>
+                                            <input type="file" accept="application/pdf,image/jpeg,image/jpg,image/png" name="file_transkrip" class="form-control" value="" >
+                                        </td>
+                                        <td><input type="submit" name="submit" class="btn btn-primary" value="Simpan"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            </tr>
+                            </form>	
+
+
+
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="6"
+                              />
+                              <tr>
+                                <td>6</td>
+                                <td>
+                                  SURAT KETERANGAN CATATAN KEPOLISIAN (SKCK)
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <br /><span
+                                    style="
+                                      font-size: 10px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    >yang dikeluarkan oleh polres setempat</span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_skck35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_skck35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                            <form
+                              action="https://penerimaan.polri.go.id/berkas/upload"
+                              class="form"
+                              id="add"
+                              enctype="multipart/form-data"
+                              method="post"
+                              accept-charset="utf-8"
+                            >
+                              <input
+                                type="hidden"
+                                name="nik"
+                                value="35280424020500021680733675"
+                              />
+                              <input
+                                type="hidden"
+                                name="berkas_kategori_id"
+                                value="7"
+                              />
+                              <tr>
+                                <td>7</td>
+                                <td>
+                                  PHOTO BERWARNA 4x6
+                                  <span
+                                    style="
+                                      font-size: 16px;
+                                      color: #ff0000;
+                                      font-weight: bold;
+                                    "
+                                    ><sup>(*)</sup></span
+                                  >
+                                  <br />
+                                  <span style="font-size: 10px"
+                                    >(Background Kuning, Kemeja Putih) type file
+                                    : .jpg, .jpeg</span
+                                  >
+                                  <p style="font-size: 10px; color: red">
+                                    *Maksimal ukuran file 2Mb
+                                  </p>
+                                </td>
+                                <td style="font-size: 11px">
+                                  <a
+                                    href="https://penerimaan.polri.go.id/uploads/berkas/2023/3/216/21642/2303164200044/berkas_syarat/file_photo35280424020500021680733675.jpeg?v=1681534816"
+                                    target="blank"
+                                    >file_photo35280424020500021680733675.jpeg</a
+                                  >
+                                </td>
+                                <td
+                                  style="
+                                    font-size: 10px;
+                                    color: #ff0000;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <span style="color: #24e00f">diterima</span>
+
+                                  <br /><span style="color: #000000"
+                                    >Keterangan : <br />telah di verifikasi oleh
+                                    OPERATOR POLRES PAMEKASAN</span
+                                  >
+                                </td>
+                                <td style="font-size: 11px">
+                                  terimakasi telah mengupload berkas
+                                </td>
+                              </tr>
+                            </form>
+                          </table>
+                          <hr />
+                          <span
+                            style="
+                              font-size: 10px;
+                              color: #ff0000;
+                              font-weight: bold;
+                            "
+                            >NB : (*) Wajib disi.</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-no-pt">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md pt-5">
+            <div class="ftco-footer-widget pt-md-5 mb-4 text-center">
+              <img
+                src="https://penerimaan.polri.go.id/assets/images/1.png"
+                style="width: 75%; padding-bottom: 20px"
+              />
+            </div>
+          </div>
+          <div class="col-md pt-5">
+            <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Info Penerimaan</h2>
+              <div class="block-23 mb-3">
+                <ul class="list-unstyled">
+                  <li><span class="text">SIPSS</span></li>
+                  <li><span class="text">Akpol</span></li>
+                  <li><span class="text">Bintara Polri</span></li>
+                  <li><span class="text">Tamtama</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md pt-5">
+            <div class="ftco-footer-widget pt-md-5 mb-4">
+              <h2 class="ftco-heading-2">Ikuti Kami</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    href="https://www.youtube.com/channel/UCIVyObxBUslJrrENre8Cj8Q"
+                    class="py-2 d-block"
+                    >Penyediaan Personel</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/rekrutmen_polri/?igshid=lkn3rhu70sgr"
+                    class="py-2 d-block"
+                    >rekrutmen_polri</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md pt-5">
+            <div class="ftco-footer-widget pt-md-5 mb-4">
+              <h2 class="ftco-heading-2">Alamat Kami</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li>
+                    <span class="icon fa fa-home"></span
+                    ><span class="text">Mabes Polri</span>
+                  </li>
+                  <li>
+                    <span class="icon fa fa-map-marker"></span
+                    ><span class="text"
+                      >Jl. Trunojoyo No. 3 Kebayoran Baru, Jakarta Selatan
+                      Indonesia 12110</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p style="font-size: 10px; color: #1daaa1">
+              Copyright &copy 2022
+              <a
+                href="https://penerimaan.polri.go.id/"
+                target="_blank"
+                style="color: #1daaa1"
+                >SSDM POLRI - Markas Besar Kepolisian Republik Indonesia.</a
+              >
+              Powered by Bagdiapers Rodalpers SSDM Polri All rights reserved.
+              Version : 4.0 - 217
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--====  End of Hero Section  ====-->
+  </body>
+</html>
