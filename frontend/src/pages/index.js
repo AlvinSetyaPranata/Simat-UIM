@@ -1,13 +1,11 @@
 import Sidebar from '@/components/Sidebar'
-import { Inter } from 'next/font/google'
+import Home from '@/layouts/Home'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function Index() {
   return (
-    <main className='w-max h-max'>
+    <main className='w-max h-max flex'>
       <Sidebar />
-      <h2>Hello Worlds</h2>
+      <Home />
     </main>
   )
 }

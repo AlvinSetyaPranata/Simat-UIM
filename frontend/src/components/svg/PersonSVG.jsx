@@ -1,9 +1,7 @@
 import { motion } from "framer-motion"
 
 
-export default function PersonSVG({isHover}) {
-
-    console.log(isHover)
+export default function PersonSVG() {
 
     return (
         <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">

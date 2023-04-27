@@ -19,7 +19,7 @@ export default function HamburgerSVG({ isActive }) {
 
 
     return (
-        <svg viewBox="0 0 100 80" width="40" height="40" className={isActive ? "w-[20px] fill-white" : "w-[20px] fill-dark"}>
+        <svg viewBox="0 0 100 80" className={`w-[20px] h-[40px] ${isActive ? "fill-white" : "fill-dark"}`}>
 
             <motion.rect rx="8" width="100" height="20" ></motion.rect>
             <motion.rect rx="8" y="30" width="100" height="20" variants={rect2Variants} animate={isActive ? 'active' : 'initial'}></motion.rect>
