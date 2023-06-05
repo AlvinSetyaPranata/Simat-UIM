@@ -11,7 +11,7 @@ class UserManager(BaseUserManager):
         
         user = self.model(username=username, **kwargs)
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
 
         return user
     
@@ -59,6 +59,12 @@ class Student(models.Model):
     user_object = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
 
+    def save(self, *args, **kwargs):        
+        _junk = kwargs.pop('using')
+        del _junk
+        return super().save(*args, using=self._state.db, **kwargs)
+
+
 
 class Teacher(models.Model):
     id = models.BigAutoField(verbose_name="id", primary_key=True)
@@ -67,3 +73,7 @@ class Teacher(models.Model):
     gender = models.CharField(max_length=20, default='Pria')
     user_object = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        _junk = kwargs.pop('using')
+        del _junk
+        return super().save(*args, using=self._state.db, **kwargs)

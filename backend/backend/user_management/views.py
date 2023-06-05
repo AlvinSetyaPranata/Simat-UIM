@@ -27,8 +27,10 @@ class LoginView(APIView):
 
         student_id = None
         # Check Access Token
-
+        user = None
+    
         if "access" in req.COOKIES:
+            print(type(AccessToken(req.COOKIES['access'])))
             try:
                 student_id = AccessToken(req.COOKIES['access'])["student_id"]
 
@@ -38,23 +40,18 @@ class LoginView(APIView):
             except InvalidToken:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-
-            if not student_id:
-                return Response(status=status.HTTP_401_UNAUTHORIZED)
+        if not student_id:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
             # Check is username exists
-            try:
-                user = student_model.objects.get(id=student_id)
+        try:
+            user = student_model.objects.get(id=student_id)
 
-            except student_model.DoesNotExist:
-                # Username doesn't exists
-                return Response(status=status.HTTP_404_NOT_FOUND)
-            
-            finally:
-                return Response()
+        except student_model.DoesNotExist:
+            # Username doesn't exists
+            return Response(status=status.HTTP_404_NOT_FOUND)
         
-
         response = Response()
 
         # To protect against XSS vulnarubilty
@@ -78,6 +75,15 @@ class StudentRegistration(APIView):
 
         except JSONDecodeError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+
+        if get_user_model().objects.filter(username=account_data['username']).exists():
+            return Response(status=status.HTTP_409_CONFLICT)
+
+
+        if Student.objects.filter(name=post_data['name']).exists():
+            return Response(status=status.HTTP_409_CONFLICT)
+
 
 
         user_serializer = UserSerializers(data=account_data)
@@ -95,7 +101,7 @@ class StudentRegistration(APIView):
         student_serializer = StudentSerializer(data=post_data)
 
         if not student_serializer.is_valid():
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(status=status.HTTP_409_CONFLICT)
 
 
         student_serializer.save()

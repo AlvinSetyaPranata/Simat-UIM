@@ -1,1 +1,3 @@
-- Fix Student Registration Serializers
+✔ Fix Student Registration Serializers @done(23-06-04 16:38)
+✔ Create a validation of user existance before user and student creation @done(23-06-05 06:19)
+✔ Migrate from Sqlite3 to Postgresql @done(23-06-05 08:02)
