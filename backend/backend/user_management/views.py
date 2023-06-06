@@ -59,6 +59,7 @@ class LoginView(APIView):
 
         student_id = None
         # Check Access Token
+
     
         if "access" in req.COOKIES:
             # Token check
@@ -75,6 +76,7 @@ class LoginView(APIView):
             user = authenticate(req, **post_data)
 
 
+
             # Check student if exists
             try:
                 Student.objects.get(id=student_id)
@@ -84,10 +86,15 @@ class LoginView(APIView):
                 # Username doesn't exists
                 return Response(status=status.HTTP_404_NOT_FOUND)
 
-
+        # User doesnt have access and refresh token
         try:
-            user = authenticate(req, **post_data)
-            print(user)
+            # user = authenticate(req, **post_data)
+            authenticate(req)
+            user = get_user_model().objects.get(username=post_data["username"])
+            
+            if not user.check_password(post_data["password"]):
+                return Response(status=status.HTTP_404_NOT_FOUND)
+
             student = Student.objects.get(user_object=user)
 
         except Student.DoesNotExist:
@@ -101,32 +108,10 @@ class LoginView(APIView):
 
         token = RefreshToken.for_user(student)
 
-        # response = Response()
 
 
-        # refresh_token_expires = datetime.utcnow() + SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"]
-        # access_token_expires = datetime.utcnow() + SIMPLE_JWT["ACCESS_TOKEN_LIFETIME"]
         csrf_token = get_token(req)
 
-        # To protect against XSS vulnarubilty
-        # response.set_cookie(
-        #     key='access', 
-        #     value=str(token.access_token), 
-        #     httponly=SIMPLE_JWT["AUTH_COOKIE_HTTP_ONLY"], 
-        #     samesite=SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
-        #     expires=access_token_expires.strftime("%a, %d %b %Y %H:%M:%S GMT"),
-        #     secure=True
-        #     )
-        
-
-        # response.set_cookie(
-        #     key='refresh', 
-        #     value=str(token), 
-        #     httponly=SIMPLE_JWT["AUTH_COOKIE_HTTP_ONLY"], 
-        #     samesite=SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
-        #     expires=refresh_token_expires.strftime("%a, %d %b %Y %H:%M:%S GMT"),
-        #     secure=True
-        # )
         data = {
             'access' : {
                 'value' : str(token.access_token),
@@ -160,6 +145,7 @@ class StudentRegistration(APIView):
             account_data = loads(post_data.pop('account')[0])
 
         except JSONDecodeError:
+            print("hellow")
             return Response(status=status.HTTP_400_BAD_REQUEST)
         
 

@@ -27,8 +27,6 @@ export default function Index() {
   // then it will navigate to login
   const data = getData()
 
-  console.log(data)
-
   return (
     <>
     <Head>

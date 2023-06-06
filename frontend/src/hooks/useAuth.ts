@@ -28,11 +28,11 @@ function useAuth(errorHandler: Dispatch<SetStateAction<{type: string, msg: strin
                 return
                 
             }   
+            // console.log(res.json())
 
             return res.json()
             
         }).then((data) => {
-            console.log(data["access"])
 
             Cookies.set("access", data["access"]["value"], {
                 expires: data["access"]["expires"],

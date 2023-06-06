@@ -17,7 +17,7 @@ async function getCsrf() {
 export default function Login() {
     
 
-    getCsrf()
+    // getCsrf()
 
 
     const usernameRef = useRef<HTMLInputElement>();

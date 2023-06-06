@@ -1,17 +1,38 @@
 import jwt
 from rest_framework import authentication
-from rest_framework.exceptions import AuthenticationFailed, ParseError
+from rest_framework.exceptions import AuthenticationFailed, ParseError, NotFound
+from django.contrib.auth import get_user_model
 from backend.settings import SECRET_KEY
 from .models import Student
 
 class LoginJwtAuthentication(authentication.BaseAuthentication):
-    def authenticate(self, request, **data):
+    def auth_without_credentials(self, request):
+        post_data = request.POST
+
+        try:
+            user = get_user_model().objects.get(username=post_data["username"])
+
+            if not user.check_password(post_data["password"]):
+                raise NotFound("")
+            
+            Student.objects.get(user_object=user)
+
+            return None
+
+        except get_user_model().DoesNotExist:
+            raise NotFound("")
+        
+        except Student.DoesNotExist:
+            raise NotFound("")
+
+
+
+    def authenticate(self, request):
         jwt_token = request.META.get('HTTP_AUTHORIZATION')
 
-        print(jwt_token)
-
         if not jwt_token:
-            raise ParseError("Invalid JWT Token")
+            # Login without credentials
+            return self.auth_without_credentials(request)
         
         jwt_token = jwt_token.replace("JWT", "").strip()
         payload = ""
@@ -40,14 +61,13 @@ class LoginJwtAuthentication(authentication.BaseAuthentication):
         if not user:
             return None
         
-        post_data = request.POST
         
         user_obj = user[0].user_object
-        # is_valid_pass = user_obj.check_password(post_data["password"])
 
-    
-        print(post_data)
-
-        request.is_authenticated = True
-
-        return user, None
+        return user_obj, payload
+        
+    def get_user(self, user_id):
+        try:
+            return get_user_model().objects.get(pk=user_id)
+        except get_user_model().DoesNotExist:
+            return None
