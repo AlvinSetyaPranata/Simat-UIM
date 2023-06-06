@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from datetime import timedelta
-
+from django.utils.timezone import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,14 +24,11 @@ SECRET_KEY = 'django-insecure-ax2f8igep&j_q8i5z2)nxlps_b)q$1iy3nz4uj55wsn==e%(=c
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-]
 
 
 
@@ -54,9 +50,9 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'user_management.User'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -146,12 +142,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'user_management.authentication.LoginJwtAuthentication',
     ],
 }
 
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME' : timedelta(days=2),
-#     'REFRESH_TOKEN_LIFETIME' : timedelta(days=8),
-# }
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME' : timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME' : timedelta(weeks=1),
+    'AUTH_COOKIE_SAMESITE' : 'Strict',
+    'AUTH_COOKIE_HTTP_ONLY' : True,
+    'SIGNING_KEY' : SECRET_KEY
+}

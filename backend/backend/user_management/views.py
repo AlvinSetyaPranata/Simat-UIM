@@ -1,20 +1,40 @@
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.http import JsonResponse
 from django.contrib.auth import get_user_model
-from django.db.utils import IntegrityError
-from django.http.response import JsonResponse
+from django.middleware.csrf import get_token
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import  AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
+from rest_framework.authentication import authenticate
+from django.utils.timezone import now
 
 from .models import Student, Teacher
 from .serializers import UserSerializers, StudentSerializer
 from json import loads
 from json.decoder import JSONDecodeError
 
+from datetime import (
+    datetime, timedelta
+)
 
+from backend.settings import SIMPLE_JWT
+
+
+
+
+class StudentView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+
+    def get(self, req):
+        print(req.COOKIES)
+
+
+
+        return Response({'he' : 'asdd '})
 
 
 class LoginView(APIView):
@@ -24,11 +44,13 @@ class LoginView(APIView):
     Request
 
     {
-        'student_name' : {student_name},
+        'username' : {username},
         'password' : {password}
     }
     
     """
+
+
 
     def post(self, req):
         post_data = req.POST.copy()
@@ -39,6 +61,7 @@ class LoginView(APIView):
         # Check Access Token
     
         if "access" in req.COOKIES:
+            # Token check
             try:
                 student_id = AccessToken(req.COOKIES['access']).payload['user_id']
 
@@ -48,39 +71,80 @@ class LoginView(APIView):
             
             except InvalidToken:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
+            
+            user = authenticate(req, **post_data)
 
 
+            # Check student if exists
             try:
-                student = Student.objects.get(id=student_id)
-                # Get all user data
-                return Response(StudentSerializer(student).data)
+                Student.objects.get(id=student_id)
+                return Response(status=status.HTTP_200_OK)
 
-            except get_user_model().DoesNotExist:
+            except Student.DoesNotExist:
                 # Username doesn't exists
                 return Response(status=status.HTTP_404_NOT_FOUND)
 
 
         try:
-            user = get_user_model().objects.get(username=post_data['username'])
+            user = authenticate(req, **post_data)
+            print(user)
             student = Student.objects.get(user_object=user)
 
-        except student.DoesNotExist:
-            # Username doesn't exists
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        
-        except user.DoesNotExist:
+        except Student.DoesNotExist:
             # Student doesn't exists
             return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        except get_user_model().DoesNotExist:
+            # Username doesn't exists
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-        response = Response(student)
         token = RefreshToken.for_user(student)
 
-        # To protect against XSS vulnarubilty
-        response.set_cookie('access', str(token.access_token), httponly=True, samesite="Strict")
-        response.set_cookie('refresh', str(token), httponly=True, samesite="Strict")
+        # response = Response()
 
-        return response
+
+        # refresh_token_expires = datetime.utcnow() + SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"]
+        # access_token_expires = datetime.utcnow() + SIMPLE_JWT["ACCESS_TOKEN_LIFETIME"]
+        csrf_token = get_token(req)
+
+        # To protect against XSS vulnarubilty
+        # response.set_cookie(
+        #     key='access', 
+        #     value=str(token.access_token), 
+        #     httponly=SIMPLE_JWT["AUTH_COOKIE_HTTP_ONLY"], 
+        #     samesite=SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
+        #     expires=access_token_expires.strftime("%a, %d %b %Y %H:%M:%S GMT"),
+        #     secure=True
+        #     )
+        
+
+        # response.set_cookie(
+        #     key='refresh', 
+        #     value=str(token), 
+        #     httponly=SIMPLE_JWT["AUTH_COOKIE_HTTP_ONLY"], 
+        #     samesite=SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
+        #     expires=refresh_token_expires.strftime("%a, %d %b %Y %H:%M:%S GMT"),
+        #     secure=True
+        # )
+        data = {
+            'access' : {
+                'value' : str(token.access_token),
+                'samesite' : 'Strict',
+                'secure' : 'true',
+                'expires' : 24
+            },
+            'refresh' : {
+                'value' : str(token),
+                'samesite' : 'Strict',
+                'secure' : 'true',
+                'expires' : 24 * 7
+            },
+            'csrftoken' : csrf_token
+        }
+
+
+        return Response(data)
     
 
 
@@ -132,7 +196,7 @@ class StudentRegistration(APIView):
         refresh_token = RefreshToken.for_user(student_serializer)
         access_token = refresh_token.access_token 
 
-        response = Response()
+        response = Response(status=status.HTTP_201_CREATED)
         response.set_cookie(key='access', value=str(access_token), httponly=True, samesite="Strict")
         response.set_cookie(key='refresh', value=str(refresh_token), httponly=True, samesite="Strict")
 
@@ -191,7 +255,6 @@ Under Development
 
 #     return Response({})
 
-
-@ensure_csrf_cookie
+@api_view(['GET'])
 def get_csrf_token(req):
-    return Response({}, status=200)
+    return Response({'csrftoken' : get_token(req)})

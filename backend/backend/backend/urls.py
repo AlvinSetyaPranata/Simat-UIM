@@ -16,13 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from user_management.views import LoginView, get_csrf_token, StudentRegistration
-from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
+from user_management.views import LoginView, get_csrf_token, StudentRegistration, StudentView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('api/auth/login/', LoginView.as_view()),
     path('api/auth/login/_refresh/', TokenRefreshView.as_view()),
     path('api/auth/register/', StudentRegistration.as_view()),
-    path('api/_get_csrf/', get_csrf_token)
+    path('api/_get_csrf/', get_csrf_token),
+    path('api/user/', StudentView.as_view()),
 ]

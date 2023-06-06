@@ -2,9 +2,24 @@ import { useRef, useState } from "react"
 import {useAuth} from "@/hooks/useAuth";
 import AlertDialog from "@/components/AlertDialog";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie"
+
+
+
+async function getCsrf() {
+    const _csrf = await fetch(`${process.env.BASE_URL}/api/_get_csrf/`, {method: 'GET'})
+
+    // console.log(_csrf.headers)
+  
+}
 
 
 export default function Login() {
+    
+
+    getCsrf()
+
+
     const usernameRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const [errorMessege, setErrorMessege] = useState({type: '', msg: ''})
