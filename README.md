@@ -36,3 +36,6 @@ MIT
  [Framer Motion]: <https://framer.com>
  [Django]: <https://www.djangoproject.com/>
   
+  
+# Note:
+FRONTEND PREVIEW ONLY - JANGAN MERGE BRANCH INI KE MAIN BRANCH

@@ -1,6 +1,0 @@
-# created by virtualenv automatically
-bin
-lib
-backend/*.sqlite3
-**/*/__pycache__
-.gitignore

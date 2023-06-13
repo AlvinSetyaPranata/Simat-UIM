@@ -10,28 +10,46 @@ import { motion } from "framer-motion";
 
 
 
-
 export default function Sidebar() {
     const [revealed, setRevealed] = useState(false)
     const [isNavActive, setIsNavActive] = useState(1)
 
-
-    // const ballonStyle = 'after:absolute after:-z-10 after:font-bold after:text-base after:cursor-default after:outline-none after:bg-dark after:px-4 after:py-3 after:font-common after:rounded-xl after:text-white after:whitespace-nowrap after:opacity-0 after:left-0 after:translate-x-[100px] group-hover:after:opacity-[100%] group-hover:after:ease-in group-hover:after:duration-500'
     
-    const baseNavButtonStyle = `static hover:cursor-pointer flex gap-x-4 px-3 py-2 bg-dark items-center rounded-xl flex-shrink-0 ${revealed ? 'translate-x-[24px] w-full pr-16' : 'gap-x-8 w-fit'}`
+    const baseNavButtonStyle = `hover:cursor-pointer flex gap-x-4 relative p-4 w-[400px] bg-dark items-center rounded-xl flex-shrink-0`
   
 
+    const sidebarVariants = {
+        reveal: { 'transform': 'translateX(0)'},
+        collapse: { 'transform': 'translateX(-350px)' }
+    }
+    
     const hamburgerVariants = {
-        reveal: { 'width': 'max-content' },
-        collapse: { 'width': '75px' }
+        reveal: {
+            "transform" : "translateX(230px)",
+            "background-color" : "white",
+        },
+        collapse: { 
+            "transform": "translateX(0)",
+            "background-color" : "#00A973",
+        }
+        
     }
 
 
 
     return (
-        <motion.div className={`overflow-y-auto bg-dark fixed min-h-screen py-10 flex flex-col items-center gap-y-14`}
+        <div className="fixed">
+        <motion.button className={`absolute z-10 md:hidden px-5 py-2 rounded-full h-max ml-6 ${revealed ? 'mt-11' : 'mt-6'}`} 
+            onClick={() => setRevealed(!revealed)}
             animate={revealed ? 'reveal' : 'collapse'}
             variants={hamburgerVariants}
+        >
+            <HamburgerSVG isActive={revealed} />
+        </motion.button>
+
+        <motion.div className={`overflow-hidden bg-dark min-h-screen py-10  flex-col items-center gap-y-14 left-0 min-w-[350px] max-w-[350px] pl-6  ${revealed ? 'flex' : 'hidden'} md:flex`}
+            animate={revealed ? 'reveal' : 'collapse'}
+            variants={sidebarVariants}
         >
             <div className="flex w-full justify-between overflow-hidden">
                 <div className={`flex gap-x-4 items-center flex-shrink-0 ease-in-out ${revealed ? 'opacity-1' : 'opacity-0'} pl-4`}>
@@ -41,13 +59,9 @@ export default function Sidebar() {
                         <h3 className="font-semibold text-white text-xl">SIMAT</h3>
                     </div>
                 </div>
-
-                <button className={`sticky px-5 py-2 rounded-full h-max ${revealed ? 'left-0 bg-dark' : 'right-[50%] translate-x-[15%] bg-white'}`} onClick={() => setRevealed(!revealed)}>
-                    <HamburgerSVG isActive={revealed} />
-                </button>
             </div>
 
-            <div className="flex flex-col justify-center gap-y-8 w-full overflow-clip pl-2">
+            <div className="flex flex-col justify-center gap-y-8 w-full overflow-hidden pl-2">
                 <div className={`${baseNavButtonStyle} hover:bg-white [&_#person]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 1 ? 'bg-white [&>p]:text-dark [&_#person]:fill-dark rounded-full' : ''}`} onClick={() => setIsNavActive(1)}>
                     <PersonSVG />
                     <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Detail Mahasiswa</p>
@@ -74,5 +88,6 @@ export default function Sidebar() {
                 </div>
             </div>
         </motion.div>
+        </div>
     )
 }
