@@ -11,7 +11,7 @@ export default function Index() {
       <title>Dashboard - Preview</title>
     </Head>
     
-    <main className='w-full h-max flex'>
+    <main className='w-full max-h-screen flex'>
       <Sidebar />
       <Home />
     </main>
