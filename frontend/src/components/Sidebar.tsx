@@ -47,7 +47,7 @@ export default function Sidebar() {
             <HamburgerSVG isActive={revealed} />
         </motion.button>
 
-        <motion.div className={`overflow-hidden bg-dark min-h-screen py-10  flex-col items-center gap-y-14 left-0 min-w-[350px] max-w-[350px] pl-6  ${revealed ? 'flex' : 'hidden'} md:flex`}
+        <motion.div className={`overflow-hidden bg-dark min-h-screen py-10  flex-col md:block items-center gap-y-14 left-0 min-w-[350px] max-w-[350px] pl-6  ${revealed ? 'flex' : 'hidden'} md:flex`}
             animate={revealed ? 'reveal' : 'collapse'}
             variants={sidebarVariants}
         >
