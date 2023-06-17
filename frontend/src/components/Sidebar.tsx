@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 
 export default function Sidebar() {
-    const [revealed, setRevealed] = useState(false)
+    const [revealed, setRevealed] = useState(true)
     const [isNavActive, setIsNavActive] = useState(1)
 
     
@@ -38,8 +38,8 @@ export default function Sidebar() {
 
 
     return (
-        <div className="fixed overflow-y-auto md:sticky md:block">
-        <motion.button className={`absolute z-10 md:hidden px-5 py-2 rounded-full h-max ml-6 ${revealed ? 'mt-11' : 'mt-6'}`} 
+        <div className={`fixed ${revealed ? 'md:sticky' : 'fixed'}`}>
+        <motion.button className={`absolute z-10 px-5 py-2 rounded-full h-max ml-6 ${revealed ? 'mt-11' : 'mt-6'}`} 
             onClick={() => setRevealed(!revealed)}
             animate={revealed ? 'reveal' : 'collapse'}
             variants={hamburgerVariants}
@@ -47,7 +47,7 @@ export default function Sidebar() {
             <HamburgerSVG isActive={revealed} />
         </motion.button>
 
-        <motion.div className={`overflow-hidden bg-dark min-h-screen py-10  flex-col md:block items-center gap-y-14 left-0 min-w-[350px] max-w-[350px] pl-6  ${revealed ? 'flex' : 'hidden'} md:flex`}
+        <motion.div className={`overflow-hidden bg-dark min-h-screen max-h-screen py-10  flex-col md:block items-center gap-y-14 left-0 min-w-[350px] max-w-[350px] pl-6 ${revealed ? 'flex' : 'hidden'} md:!flex`}
             animate={revealed ? 'reveal' : 'collapse'}
             variants={sidebarVariants}
         >
@@ -61,7 +61,11 @@ export default function Sidebar() {
                 </div>
             </div>
 
-            <div className="flex flex-col justify-center gap-y-8 w-full overflow-hidden pl-2">
+            <div className="flex flex-col justify-center gap-y-8 w-full overflow-x-hidden overflow-y-auto pl-2">
+                {/* <div className={`${baseNavButtonStyle} hover:bg-white [&_#person]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 1 ? 'bg-white [&>p]:text-dark [&_#person]:fill-dark rounded-full' : ''}`} onClick={() => setIsNavActive(1)}>
+                    <PersonSVG />
+                    <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Detail Mahasiswa</p>
+                </div> */}
                 <div className={`${baseNavButtonStyle} hover:bg-white [&_#person]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 1 ? 'bg-white [&>p]:text-dark [&_#person]:fill-dark rounded-full' : ''}`} onClick={() => setIsNavActive(1)}>
                     <PersonSVG />
                     <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Detail Mahasiswa</p>
