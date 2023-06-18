@@ -35,6 +35,8 @@ export default function Sidebar() {
         
     }
 
+    // id, svg, name, path
+
 
 
     return (
@@ -62,10 +64,6 @@ export default function Sidebar() {
             </div>
 
             <div className="flex flex-col justify-center gap-y-8 w-full overflow-x-hidden overflow-y-auto pl-2">
-                {/* <div className={`${baseNavButtonStyle} hover:bg-white [&_#person]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 1 ? 'bg-white [&>p]:text-dark [&_#person]:fill-dark rounded-full' : ''}`} onClick={() => setIsNavActive(1)}>
-                    <PersonSVG />
-                    <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Detail Mahasiswa</p>
-                </div> */}
                 <div className={`${baseNavButtonStyle} hover:bg-white [&_#person]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 1 ? 'bg-white [&>p]:text-dark [&_#person]:fill-dark rounded-full' : ''}`} onClick={() => setIsNavActive(1)}>
                     <PersonSVG />
                     <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Detail Mahasiswa</p>

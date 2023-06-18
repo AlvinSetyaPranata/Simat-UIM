@@ -9,6 +9,10 @@ export default function Index() {
     <>
     <Head>
       <title>Dashboard - Preview</title>
+      <meta name="description" content="Simat UIM Preview" />
+      <meta charSet="utf-8" />
+      <meta name="author" content="Alvin Setya Pranata" />
+      <meta name="keywords" content="simat, uim" />
     </Head>
     
     <main className='w-full max-h-screen flex'>
