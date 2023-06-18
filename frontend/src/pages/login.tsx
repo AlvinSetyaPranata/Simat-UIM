@@ -2,8 +2,6 @@ import { useRef, useState } from "react"
 import {useAuth} from "@/hooks/useAuth";
 import AlertDialog from "@/components/AlertDialog";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie"
-
 
 
 async function getCsrf() {
