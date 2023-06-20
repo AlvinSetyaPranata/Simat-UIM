@@ -5,7 +5,7 @@ import PersonSVG from "./svg/PersonSVG";
 import WalletSVG from "./svg/WalletSVG";
 import AccountSVG from "./svg/AccountSVG";
 import LogoutSVG from "./svg/LogoutSVG";
-import { useEffect, useState } from "react"
+import { useMemo, useState } from "react"
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
@@ -47,7 +47,7 @@ export default function Sidebar() {
     }
 
 
-    useEffect(() => {
+    useMemo(() => {
         switch (router.pathname) {
             case "/details":
                 setIsNavActive(1)
@@ -68,7 +68,7 @@ export default function Sidebar() {
                 setIsNavActive(6)
                 break
         }
-    }, [])
+    }, [router.pathname])
 
 
     return (
