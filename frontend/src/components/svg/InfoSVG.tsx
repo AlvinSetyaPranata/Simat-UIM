@@ -1,7 +1,3 @@
-interface propsType {
-    color: string
-}
-
 
 export default function InfoSVG() {
     return (
