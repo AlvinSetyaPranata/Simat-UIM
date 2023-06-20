@@ -16,7 +16,7 @@ export default function Sidebar() {
     const [isNavActive, setIsNavActive] = useState(1)
     const router = useRouter()
 
-    const paths = ['/details', '/assignment', '/payment', '/settings', '/about', '/logout']
+    const paths = ['/details', '/assignment', '/payments', '/settings', '/about', '/logout']
 
 
     const baseNavButtonStyle = `hover:cursor-pointer flex gap-x-4 relative p-4 w-[400px] bg-dark items-center rounded-xl flex-shrink-0`
@@ -55,7 +55,7 @@ export default function Sidebar() {
             case "/assignment":
                 setIsNavActive(2)
                 break
-            case "/payment":
+            case "/payments":
                 setIsNavActive(3)
                 break
             case "/settings":
