@@ -4,7 +4,8 @@ FRONTEND:
     ✔ Migrate from Sqlite3 to Postgresql @done(23-06-05 08:02)
     ✔ Fix Login and Registration (JWT, Serializing data) @done(23-06-05 09:05)
     ✘ Create layouts for multiple pages @cancelled(23-06-18 16:59)
-    ☐ Redirect page while accessing index
+    ✔ Redirect page while accessing index @done(23-06-21 11:07)
+    ☐ Create other pages
 
 
 BACKEND:

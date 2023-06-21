@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
+import { FC } from "react"
 
-
-export default function PersonSVG() {
+const PersonSVG: FC = () => {
 
     return (
         <svg  viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-[27px] h-[27px] md:w-[32px] md:h-[32px]">
@@ -10,3 +10,6 @@ export default function PersonSVG() {
 
     )
 }
+
+
+export default PersonSVG
