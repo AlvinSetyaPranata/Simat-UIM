@@ -109,9 +109,6 @@ class LoginView(APIView):
         token = RefreshToken.for_user(student)
 
 
-
-        csrf_token = get_token(req)
-
         data = {
             'access' : {
                 'value' : str(token.access_token),
@@ -125,7 +122,6 @@ class LoginView(APIView):
                 'secure' : 'true',
                 'expires' : 24 * 7
             },
-            'csrftoken' : csrf_token
         }
 
 
@@ -241,6 +237,6 @@ Under Development
 
 #     return Response({})
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_csrf_token(req):
     return Response({'csrftoken' : get_token(req)})

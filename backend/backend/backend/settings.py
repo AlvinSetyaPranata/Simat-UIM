@@ -151,6 +151,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME' : timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME' : timedelta(weeks=1),
     'AUTH_COOKIE_SAMESITE' : 'Strict',
-    'AUTH_COOKIE_HTTP_ONLY' : True,
+    'AUTH_COOKIE_HTTP_ONLY' : False,
     'SIGNING_KEY' : SECRET_KEY
 }

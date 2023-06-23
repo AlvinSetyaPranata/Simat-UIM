@@ -4,18 +4,26 @@ import AlertDialog from "@/components/AlertDialog";
 import { useRouter } from "next/router";
 
 
-async function getCsrf() {
-    const _csrf = await fetch(`${process.env.BASE_URL}/api/_get_csrf/`, {method: 'GET'})
-
-    // console.log(_csrf.headers)
-  
+export async function getServerSideProps() {
+    const token = await fetch(`${process.env.BASE_URL}/api/_get_csrf`, {
+        method: 'post',
+        body: {
+            key : process.env.SECRET_KEY
+        }
+    })
+    
+    return (
+        {
+            props : {
+                csrftoken: token
+            }
+        }
+    )
 }
 
 
-export default function Login() {
+export default function Login({csrftoken}) {
     
-
-    // getCsrf()
 
 
     const usernameRef = useRef<HTMLInputElement>();
@@ -42,6 +50,7 @@ export default function Login() {
                 {/* form fields */}
 
                 <form onSubmit={(e) => handleSubmit(e)} method="post" action="" className="grid gap-y-14 min-w-full mt-[100px]">
+                    <input type="hidden" name="csrftoken" value={csrftoken}/>
                     <div className="w-full grid gap-y-2">
                         <label htmlFor="username" className="font-semibold">Nama Pengguna</label>
                         <input ref={usernameRef} type="text" name="username" className="bg-slate-200 rounded-md py-2 px-4 outline-none" required/>
