@@ -74,7 +74,7 @@ export default function Sidebar() {
 
 
     return (
-        <div className={`fixed ${revealed ? 'md:sticky' : 'fixed'}`}>
+        <div className={`fixed z-20 ${revealed ? 'md:sticky' : 'fixed'}`}>
             <motion.button className={`absolute z-10 px-5 py-2 rounded-full h-max ml-6 ${revealed ? 'mt-11' : 'mt-6'}`}
                 onClick={() => setRevealed(!revealed)}
                 animate={revealed ? 'reveal' : 'collapse'}
