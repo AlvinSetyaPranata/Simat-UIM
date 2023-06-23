@@ -23,7 +23,7 @@ export default function Home({ children }: PropsWithChildren) {
 
                 <div className="w-full max-h-screen overflow-y-auto">
                     <div className="min-w-full bg-base grid md:flex place-items-center text-white py-6 md:py-12 px-28 md:gap-12 md:items-center">
-                        <div className="w-[150px] h-[150px] md:flex-shrink-0 rounded-full overflow-hidden relative">
+                        <div className="w-[150px] h-[150px] md:flex-shrink-0 rounded-full overflow-hidden relative -z-10">
                             <div className="min-w-full min-h-full bg-black opacity-0 hover:opacity-25 absolute transition-opacity duration-300">
                                 <p>Ganti</p>
                             </div>
