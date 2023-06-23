@@ -3,9 +3,13 @@ FRONTEND:
     ✔ Create a validation of user existance before user and student creation @done(23-06-05 06:19)
     ✔ Migrate from Sqlite3 to Postgresql @done(23-06-05 08:02)
     ✔ Fix Login and Registration (JWT, Serializing data) @done(23-06-05 09:05)
+    ✘ Create layouts for multiple pages @cancelled(23-06-18 16:59)
+    ✔ Redirect page while accessing index @done(23-06-21 11:07)
+    ☐ Create other pages
+    ☐ Create custom notification on root layout
 
 
 BACKEND:
     ✔ Check login and registration request @done(23-06-06 08:56)
     ✔ Create access and refresh token expiration handler @done(23-06-06 08:56)
-    ☐ Fix JWT authentication backend
+    ✔ Fix JWT authentication backend @done(23-06-18 16:59)
