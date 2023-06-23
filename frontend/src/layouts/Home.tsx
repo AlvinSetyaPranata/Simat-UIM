@@ -9,7 +9,7 @@ export default function Home({ children }: PropsWithChildren) {
     return (
         <>
             <Head>
-                <title>Dashboard - Preview</title>
+                <title>Dashboard - Demo</title>
                 <meta name="description" content="Simat UIM Preview" />
                 <meta charSet="utf-8" />
                 <meta name="author" content="Alvin Setya Pranata" />
@@ -22,7 +22,10 @@ export default function Home({ children }: PropsWithChildren) {
 
                 <div className="w-full max-h-screen overflow-y-auto">
                     <div className="min-w-full bg-base grid md:flex place-items-center text-white py-6 md:py-12 px-28 md:gap-12 md:items-center">
-                        <div className="w-[150px] h-[150px] md:flex-shrink-0 rounded-full overflow-hidden">
+                        <div className="w-[150px] h-[150px] md:flex-shrink-0 rounded-full overflow-hidden relative">
+                            <div className="min-w-full min-h-full bg-black opacity-0 hover:opacity-25 absolute transition-opacity duration-300">
+                                <p>Ganti</p>
+                            </div>
                             <Image width={150} height={150} src="/image.jpg" alt="image" className="min-w-full min-h-full object-cover" />
                         </div>
                         <div className="grid place-items-center md:w-full md:flex md:justify-between md:items-center">

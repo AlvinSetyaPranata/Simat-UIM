@@ -6,6 +6,7 @@ FRONTEND:
     ✘ Create layouts for multiple pages @cancelled(23-06-18 16:59)
     ✔ Redirect page while accessing index @done(23-06-21 11:07)
     ☐ Create other pages
+    ☐ Create custom notification on root layout
 
 
 BACKEND:

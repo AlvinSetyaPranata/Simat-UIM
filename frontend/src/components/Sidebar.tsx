@@ -41,6 +41,11 @@ export default function Sidebar() {
 
 
     const onClickHandler = (id: number) => {
+        
+        if (id == 5) {
+            confirm("Anda yakin akan keluar?")
+            return
+        }
         setIsNavActive(id)
 
         router.push(paths[id - 1])
@@ -58,14 +63,11 @@ export default function Sidebar() {
             case "/payments":
                 setIsNavActive(3)
                 break
-            case "/settings":
+            case "/about":
                 setIsNavActive(4)
                 break
-            case "/about":
-                setIsNavActive(5)
-                break
             case "/logout":
-                setIsNavActive(6)
+                setIsNavActive(5)
                 break
         }
     }, [router.pathname])
@@ -108,15 +110,15 @@ export default function Sidebar() {
                         <WalletSVG  />
                         <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Pembayaran</p>
                     </div>
-                    <div className={`${baseNavButtonStyle} hover:bg-white [&_#account]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 4 ? 'rounded-full bg-white [&>p]:text-dark [&_#account]:fill-dark' : ''}`} onClick={() => onClickHandler(4)}>
+                    {/* <div className={`${baseNavButtonStyle} hover:bg-white [&_#account]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 4 ? 'rounded-full bg-white [&>p]:text-dark [&_#account]:fill-dark' : ''}`} onClick={() => onClickHandler(4)}>
                         <AccountSVG  />
                         <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Pengaturan Akun</p>
-                    </div>
-                    <div className={`${baseNavButtonStyle}  hover:bg-white [&_#info]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 5 ? 'rounded-full bg-white [&>p]:text-dark [&_#info]:fill-dark' : ''}`} onClick={() => onClickHandler(5)}>
+                    </div> */}
+                    <div className={`${baseNavButtonStyle}  hover:bg-white [&_#info]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 4 ? 'rounded-full bg-white [&>p]:text-dark [&_#info]:fill-dark' : ''}`} onClick={() => onClickHandler(4)}>
                         <InfoSVG  />
                         <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>Tentang Applikasi</p>
                     </div>
-                    <div className={`${baseNavButtonStyle}  hover:bg-white [&_#logout]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 6 ? 'rounded-full bg-white [&>p]:text-dark [&_#logout]:fill-dark' : ''}`} onClick={() => onClickHandler(6)}>
+                    <div className={`${baseNavButtonStyle}  hover:bg-white [&_#logout]:hover:fill-dark [&>p]:hover:text-dark ${isNavActive === 5 ? 'rounded-full bg-white [&>p]:text-dark [&_#logout]:fill-dark' : ''}`} onClick={() => onClickHandler(5)}>
                         <LogoutSVG />
                         <p className={`text-white font-common font-semibold text-sm md:text-base  flex-shrink-0 ${!revealed ? 'hidden' : ''}`}>keluar</p>
                     </div>
