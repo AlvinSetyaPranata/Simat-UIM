@@ -2,6 +2,10 @@ import Home from "@/layouts/Home"
 import { useState } from "react"
 
 
+
+// export const config = { amp : true }
+
+
 function Details() {
     const [selected, setSelected] = useState<number>(1)
     const [disabled, setDisabled] = useState<boolean>(true)
@@ -24,7 +28,6 @@ function Details() {
     }
 
     const handleUpdate = () => {
-        // handle update data
 
         setDisabled(true)
     }
