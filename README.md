@@ -37,7 +37,7 @@ MIT
 <br>
 
 ### Live Demo
-Demo mengenai applikasi dapat lihat <a href="simat-uim.vercel.app">Disini</a> 
+Demo mengenai applikasi dapat lihat <a href="https://simat-uim.vercel.app/">Disini</a> 
 
  [React JS]: <https://reactjs.org>
  [Tailwind CSS]: <https://tailwindcss.com>
