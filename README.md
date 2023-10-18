@@ -2,16 +2,21 @@
 
 Applikasi ditujukan untuk membantu mahasiswa dalam memanagement dan mengkontrol aktivitas yang berkaitan dengan perkuliahannya
 
+<br>
+
 ### Versi
 - SIMAT-v.3.0
 - Sweet Watermelon
 - **SMA (Si Manis A)**
+<br>
 
 ### Fitur
 - Informasi Pribadi
 - Pembayaran Online
 - Laporan Online
 - Lembar Jawaban Online
+
+<br>
 
 ### Teknologi
 
@@ -24,12 +29,15 @@ Applikasi ini dibuat menggunakan Teknologi terbaru, antara lain:
 
 Dan tentunya applikasi ini adalah applikasi Open Source dan menggunakan metode **SPA** (Single Page Application) yang dapat meningkatkan performa website, serta user expirience yang bagus
 
+<br>
+
 ### Lisensi
 MIT
 
-### Dikembangkan oleh 
-![Alt text](https://raw.githubusercontent.com/AlvinSetyaPranata/alvinsetyaportfolio/master/public/logo%201.png)
-**Sanscode Dev**
+<br>
+
+### Live Demo
+Demo mengenai applikasi dapat lihat <a href="simat-uim.vercel.app">Disini</a> 
 
  [React JS]: <https://reactjs.org>
  [Tailwind CSS]: <https://tailwindcss.com>
