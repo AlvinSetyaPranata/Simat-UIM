@@ -1,19 +1,19 @@
-# SIMAT - _Sistem Informasi Akademik Terpadu_
+## SIMAT - _Sistem Informasi Akademik Terpadu_
 
-Applikasi untuk membantu mahasiswa dalam memanagement dan mengkontrol aktivitas yang berkaitan dengan perkuliahannya
+Applikasi ditujukan untuk membantu mahasiswa dalam memanagement dan mengkontrol aktivitas yang berkaitan dengan perkuliahannya
 
-# Versi
+### Versi
 - SIMAT-v.3.0
 - Sweet Watermelon
 - **SMA (Si Manis A)**
 
-# Fitur
+### Fitur
 - Informasi Pribadi
 - Pembayaran Online
 - Laporan Online
 - Lembar Jawaban Online
 
-# Teknologi
+### Teknologi
 
 Applikasi ini dibuat menggunakan Teknologi terbaru, antara lain:
 
@@ -24,10 +24,10 @@ Applikasi ini dibuat menggunakan Teknologi terbaru, antara lain:
 
 Dan tentunya applikasi ini adalah applikasi Open Source dan menggunakan metode **SPA** (Single Page Application) yang dapat meningkatkan performa website, serta user expirience yang bagus
 
-## Lisensi
+### Lisensi
 MIT
 
-## Dikembangkan oleh 
+### Dikembangkan oleh 
 ![Alt text](https://raw.githubusercontent.com/AlvinSetyaPranata/alvinsetyaportfolio/master/public/logo%201.png)
 **Sanscode Dev**
 
