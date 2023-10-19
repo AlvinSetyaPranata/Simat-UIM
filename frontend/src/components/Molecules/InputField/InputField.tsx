@@ -8,7 +8,7 @@ export default function InputField({label, className, children, isValid=true}: i
 
     return (
         <div className={finalClassName}>
-            <label className="font-semibold text-sm">{label}</label>
+            <label className="font-semibold text-black text-sm">{label}</label>
             {children ? children : <Input />}
             
             {!isValid && <span>This is not valid</span>}

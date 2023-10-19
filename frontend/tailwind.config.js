@@ -22,7 +22,7 @@ module.exports = {
       },
 
       fontFamily: {
-        'common' : 'Open Sans, sans-serif'
+        'common' : 'Inter, sans-serif'
       }
     },
   },

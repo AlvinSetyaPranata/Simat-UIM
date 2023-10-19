@@ -6,7 +6,7 @@ export type elementsRefsType = MutableRefObject<React.DetailedHTMLProps<React.In
 
 export type singleElementsRefType = MutableRefObject<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>|null>
 
-export type validateType = (next: ()=>void, ...elementsRefs: elementsRefsType) => void
+export type validateType = (next: Promise<void>|(()=>void), ...elementsRefs: elementsRefsType) => void
 
 export interface invalidObjectType {
     ref: singleElementsRefType|null,

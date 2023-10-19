@@ -25,7 +25,7 @@ function isEmpty(ref: singleElementsRefType, value: string, setInvalidInput: Dis
 export default function useValidation(extended=__defaultExtended): useValidationReturnType {
     const [invalidInput, setInvalidInput] = useState<invalidObjectType>(__defaultInvalidObject)
 
-    return [invalidInput, (next: () => void, ...elementsRefs: elementsRefsType) => {
+    return [invalidInput, (next: Promise<void>|(()=>void), ...elementsRefs: elementsRefsType) => {
         elementsRefs.map((ref) => {
             const value = ref.current.value.toString()
 
@@ -35,7 +35,7 @@ export default function useValidation(extended=__defaultExtended): useValidation
             // Do validation that extended from user
             extended(ref, value, setInvalidInput)
 
-            next()
+            console.log(typeof next)
         })
     }]
 }

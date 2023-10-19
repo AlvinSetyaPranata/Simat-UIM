@@ -3,7 +3,7 @@ import { MutableRefObject } from "react";
 
 function useAuth() {
     
-    return async (username?: MutableRefObject<undefined>, password?: MutableRefObject<undefined>) => {
+    return async (username: MutableRefObject<HTMLInputElement>, password?: MutableRefObject<HTMLInputElement>) => {
 
         if (!username.current.value || !password.current.value) {
             return
@@ -16,8 +16,8 @@ function useAuth() {
                 
             }
         })
-            .then((res) => console.log(res))
-         .catch(() => alert("Server sedang tidak meresponse"))
+        .then((res) => alert("OK"))
+        .catch(() => alert("Server sedang tidak meresponse"))
     }
 }
 
