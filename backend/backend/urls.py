@@ -19,6 +19,5 @@ from User import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("testing/", views.api_temp),
-    path("testing/kk/", views.new_),
+    path("auth/", views.login_handle),
 ]

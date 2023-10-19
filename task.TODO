@@ -1,0 +1,12 @@
+-> DEVELOPMENT 1
+
+FRONTEND:
+✔ Create useAuth hooks @done(23-10-19 09:42)
+✔ Create an Atom component: Input @done(23-10-19 09:43)
+✔ Create useValidation hooks @done(23-10-19 09:43)
+✔ Create types for all hooks and components @done(23-10-19 09:44)
+✔ Create an Molecule component: FormField @done(23-10-19 09:45)
+✔ Create an Molecule component: InputField @done(23-10-19 09:45)
+✘ Create handler for FormField @started(23-10-19 09:46) @cancelled(23-10-19 10:13) @wasted(27m28s)
+☐ Seperate between input that have an eye toggle with normal input
+☐ Create an event that when user click the field and input is invalid then reset the class to normal state

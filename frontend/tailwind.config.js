@@ -18,6 +18,7 @@ module.exports = {
       
       textColor: {
         'dark' : '#2F4858',
+        'gold' : '#ECE421'
       },
 
       fontFamily: {
